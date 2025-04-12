@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-// Convert library to regular contract
 contract WalletLib {
     event ProposalExecuted(uint256 indexed proposalId, address by);
 
@@ -100,10 +99,6 @@ contract WalletLib {
         require(success, "transfer failed");
 
         emit ProposalExecuted(proposalId, msg.sender);
-    }
-
-    function testDelegate(uint8 newVal) external {
-        _numOwners = newVal;
     }
 }
 
