@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import {Test, console} from "forge-std/Test.sol";
 import {CustomProtection} from "../src/CustomProtection/CustomProtection.sol";
 
-contract PaymentSystemTest is Test {
+contract CustomProtectionTest is Test {
     CustomProtection protection;
     address public owner = address(1);
 
