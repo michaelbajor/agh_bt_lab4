@@ -2,9 +2,9 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {PaymentSystem} from "../src/PaymentSystem.sol";
+import {PaymentSystem} from "../src/PaymentSystem/PaymentSystem.sol";
 
-contract CounterTest is Test {
+contract PaymentSystemTest is Test {
     PaymentSystem public paymentSystem;
     address public user1 = address(1);
     address public user2 = address(2);
