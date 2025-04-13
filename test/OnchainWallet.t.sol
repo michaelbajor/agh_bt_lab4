@@ -68,6 +68,6 @@ contract OnchainWalletTest is Test {
     }
 
     function test_exploit() public {
-        // TODO
+        // TODO: It would be a shame if someone pwned the wallet, right?
     }
 }

@@ -11,6 +11,7 @@ contract PaymentSystem {
 
     struct ClaimablePayment {
         bool exists; // is that required? If so, why? :)
+        address sender;
         uint amount;
         string description;
     }
@@ -35,6 +36,7 @@ contract PaymentSystem {
 
         ClaimablePayment memory payment = ClaimablePayment(
             true,
+            msg.sender,
             msg.value,
             description
         );
@@ -52,5 +54,18 @@ contract PaymentSystem {
 
         payment.exists = false;
         emit PaymentClaimed(msg.sender, payment.amount);
+    }
+
+    function rejectPayment() external {
+        ClaimablePayment storage payment = _payments[msg.sender];
+        require(payment.exists, "No available payment");
+
+        // send the money back to sender and delete the payment
+        (bool success, ) = payable(payment.sender).call{value: payment.amount}(
+            ""
+        );
+        require(success, "transfer failed");
+
+        delete _payments[msg.sender];
     }
 }

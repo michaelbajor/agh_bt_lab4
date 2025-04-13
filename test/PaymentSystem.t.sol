@@ -50,7 +50,36 @@ contract PaymentSystemTest is Test {
         paymentSystem.claimPayment();
     }
 
+    function test_rejectionWorks() public {
+        string memory description = "Payment for invoice 1/1/2025";
+        vm.deal(user1, 10 ether);
+        vm.prank(user1);
+        paymentSystem.createPayment{value: 1 ether}(user2, description);
+
+        PaymentSystem.ClaimablePayment memory payment = paymentSystem
+            .getPaymentFor(user2);
+        assertTrue(payment.exists);
+        assertEq(payment.amount, 1 ether);
+        assertEq(payment.description, description);
+
+        assertEq(user1.balance, 9 ether);
+
+        vm.prank(user2);
+        paymentSystem.rejectPayment();
+
+        PaymentSystem.ClaimablePayment memory paymentAfter = paymentSystem
+            .getPaymentFor(user2);
+        assertFalse(paymentAfter.exists);
+        assertEq(paymentAfter.amount, 0);
+        assertEq(paymentAfter.description, "");
+        assertEq(user1.balance, 10 ether);
+
+        vm.prank(user2);
+        vm.expectRevert("No available payment");
+        paymentSystem.claimPayment();
+    }
+
     function test_exploit() public {
-        // TODO
+        // TODO: can you drain the Payment system?
     }
 }

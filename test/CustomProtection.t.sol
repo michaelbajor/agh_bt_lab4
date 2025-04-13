@@ -30,6 +30,6 @@ contract CustomProtectionTest is Test {
     }
 
     function test_exploit() public {
-        // TODO
+        // TODO: Can you bypass the protection?
     }
 }
