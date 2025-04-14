@@ -31,5 +31,6 @@ contract CustomProtectionTest is Test {
 
     function test_exploit() public {
         // TODO: Can you bypass the protection?
+        // You can assume that you'd be able to convince owner to call your contract (if any)
     }
 }

@@ -6,7 +6,9 @@ Each *.t.sol file is a test file associated with the given contract (file names 
 
 Your solutions should be present in the `test_exploit` function. You can implement helper contracts if they are required for exploits. More users can also be added.
 
-There is no suggested order of "tasks" - do them in whatever order you want to. One caveat, the `Bank` task will probably be the most challenging of them. It does not mean it's much harder than the rest, but it will require the most complex exploit, which might take some time to develop if you don't have experience with Foundry. If it really will be hard, maybe we can think of a bonus point for the project for whoever manages to solve it during the lab.
+There is no suggested order of "tasks" - do them in whatever order you want to. One caveat, the `Bank` task will probably be the most challenging of them. It does not mean it's much harder than the rest, but it will require the most complex exploit, which might take some time to develop if you don't have experience with Foundry.
+
+There's a bonus point for the project waiting for whoever manages to solve it during the lab. Small tip: try to solve `PaymentSystem` before `Bank`.
 
 Everything (or at least most) that you'd need to solve every challenge has been talked about during the lectures.
 

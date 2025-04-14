@@ -88,16 +88,13 @@ contract WETH is Ownable {
 
         uint256 userBalanceAfter = address(this).balance;
 
+        // normally there would be some proper fee calculation
+        // but let's keep it simple here, as long as "we have more"
+        // than before, we are good
         require(
-            userBalanceAfter >= userBalanceBefore,
-            "PETH: You did not return my Ether!"
+            userBalanceAfter > userBalanceBefore,
+            "WETH: You did not return my Ether!"
         );
-
-        // if user gave me more Ether, refund it
-        if (userBalanceAfter > userBalanceBefore) {
-            uint256 refund = userBalanceAfter - userBalanceBefore;
-            payable(_userAddress).sendValue(refund);
-        }
     }
 
     function _mint(address dst, uint256 amount) internal {
