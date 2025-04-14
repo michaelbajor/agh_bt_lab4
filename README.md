@@ -12,6 +12,8 @@ There's a bonus point for the project waiting for whoever manages to solve it du
 
 Everything (or at least most) that you'd need to solve every challenge has been talked about during the lectures.
 
+**After cloning please run `forge test` to make sure everything works (no errors are expected on a clean project)**
+
 ## Usage
 
 ### Build
